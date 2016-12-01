@@ -8,7 +8,7 @@
 // @include     https://blankmediagames.com/phpbb/*
 // @include     https://www.blankmediagames.com/phpbb/*
 // @grantnone
-// @version     1.0.6
+// @version     1.0.7
 // ==/UserScript==
 // --------------------
 // Configurable parameters, you may change values here
@@ -59,9 +59,7 @@ function actualThing() {
 
         var insertIndex = authorString.search("</a>by") + 4;
         authorString = authorString.substring(0, insertIndex) + " Post <a href=\"./viewtopic.php?p=" + postID + "#p" + postID + "\"><strong>#" + postNumber + "</strong></a> " + authorString.substring(insertIndex, authorString.length);
-        console.log(authorString);
-        insertIndex = authorString.search(" Post");
-        console.log(insertIndex);
+        insertIndex = authorString.search(" ");
         authorString = authorString.substring(0, insertIndex) + " (<a href=\"./search.php?t=" + threadNumber + "&author=" + authorName + "\">ISO</a>)" + authorString.substring(insertIndex, authorString.length);
         authorLine.html(authorString);
     });
@@ -84,3 +82,4 @@ function loadScript(src, callback) {
 }
 
 loadScript("//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js", actualThing);
+
